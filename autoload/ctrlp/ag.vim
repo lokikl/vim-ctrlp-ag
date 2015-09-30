@@ -72,12 +72,7 @@ endfunction
 "
 function! ctrlp#ag#accept(mode, str)
   call ctrlp#exit()
-
-  let [path, line, column; rest] = split(a:str, ':')
-
-  if a:mode == 't'
-    exec "tab drop " . path . "|" . line . "| normal " . column . "|"
-  end
+  call s:open_file(a:mode, a:str)
 endfunction
 
 " (optional) Do something before enterting ctrlp
@@ -100,6 +95,11 @@ function! ctrlp#ag#id()
   return s:id
 endfunction
 
+function! s:open_file(mode, str)
+  let [path, line, column; rest] = split(a:str, ':')
+  call ctrlp#acceptfile(a:mode, path)
+  call cursor(line, column)
+endfunction
 
 function! s:get_visual_selection()
   let [lnum1, col1] = getpos("'<")[1:2]
