@@ -35,7 +35,7 @@ function! ctrlp#ag#exec(mode)
     let s:word = a:mode
   endif
 
-  let s:ag_results = split(system("ag -Qs --column --ignore tags '" . s:word . "'"), "\n")
+  let s:ag_results = split(system(g:ctrlp_ag_filter . "ag -Qs --column --ignore tags '" . s:word . "'"), "\n")
 
   " remove current file/line from results
   let bname = bufname('%') . ':' . line('.')
