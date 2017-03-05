@@ -3,6 +3,9 @@
 [CtrlP][1] extension for global searching source code with ag.
 Modified from [vim-ctrlp-tjump][2], another CtrlP extension that is strongly recommended.
 
+Automatically configures `:grep` and CtrlP to use ag unless `grepprg` or `g:ctrlp_user_command`
+have been user-defined.
+
 ## Installation
 
 1. Fire any plugin manager like Vundle
