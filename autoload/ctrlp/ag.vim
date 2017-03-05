@@ -21,6 +21,7 @@ call add(g:ctrlp_ext_vars, {
       \ })
 
 function! ctrlp#ag#exec(mode)
+  let s:ag_opt_for_sensitivity = "-s"
   if a:mode == 'p'
     let s:word = s:word
   elseif a:mode == 'v'
@@ -32,10 +33,13 @@ function! ctrlp#ag#exec(mode)
       let s:word = expand('<cword>')
     endif
   else
+    let s:ag_opt_for_sensitivity = "-S"
     let s:word = a:mode
   endif
 
-  let s:ag_results = split(system(g:ctrlp_ag_filter . "ag -Qs --column --ignore tags '" . s:word . "'"), "\n")
+  let s:ag_results = split(system(g:ctrlp_ag_filter .
+        \ "ag -Q " . s:ag_opt_for_sensitivity .
+        \ " --column --ignore tags '" . s:word . "'"), "\n")
 
   " remove current file/line from results
   let bname = bufname('%') . ':' . line('.')
