@@ -37,9 +37,14 @@ function! ctrlp#ag#exec(mode)
     let s:word = a:mode
   endif
 
+  if (!exists('g:ctrlp_ag_ignores'))
+    let g:ctrlp_ag_ignores = "--ignore tags"
+  endif
+
   let s:ag_results = split(system(g:ctrlp_ag_filter .
         \ "ag -Q " . s:ag_opt_for_sensitivity .
-        \ " --column --ignore tags '" . s:word . "'"), "\n")
+        \ " --column " . g:ctrlp_ag_ignores .
+        \ " '" . s:word . "'"), "\n")
 
   " remove current file/line from results
   let bname = bufname('%') . ':' . line('.')
