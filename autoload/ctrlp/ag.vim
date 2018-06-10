@@ -25,7 +25,13 @@ function! ctrlp#ag#exec(mode)
   if a:mode == 'p'
     let s:word = s:word
   elseif a:mode == 'v'
-    let s:word = s:get_visual_selection()
+    let newword = s:get_visual_selection()
+    if exists('s:word') && s:word == newword
+      echoerr 'Please use CtrlPagPrevious instead to build your muscle memory :)'
+      return
+    else
+      let s:word = newword
+    endif
   elseif a:mode == 'n'
     if (&filetype == 'ruby' || &filetype == 'eruby') && exists("*RubyCursorIdentifier")
       let s:word = RubyCursorIdentifier()
@@ -34,7 +40,13 @@ function! ctrlp#ag#exec(mode)
     endif
   else
     let s:ag_opt_for_sensitivity = "-S"
-    let s:word = a:mode
+    let newword = a:mode
+    if exists('s:word') && s:word == newword
+      echoerr 'Please use CtrlPagPrevious instead to build your muscle memory :)'
+      return
+    else
+      let s:word = newword
+    endif
   endif
 
   if (!exists('g:ctrlp_ag_ignores'))
