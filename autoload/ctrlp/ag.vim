@@ -53,8 +53,12 @@ function! ctrlp#ag#exec(mode)
     let g:ctrlp_ag_ignores = "--ignore tags"
   endif
 
-  if exists('g:ctrlp_ag_search_base') && g:ctrlp_ag_search_base == 'current-file-dir'
-    let dir = expand('%:p:h')
+  if exists('g:ctrlp_ag_search_base') 
+    if g:ctrlp_ag_search_base == 'current-file-dir'
+      let dir = expand('%:p:h')
+    else
+      let dir = g:ctrlp_ag_search_base
+    endif
   else
     let dir = ''
   endif

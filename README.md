@@ -26,8 +26,10 @@ have been user-defined.
         \ --ignore "_build/*"
         \ --ignore "node_modules/*"'
     " By default ag will search from PWD
-    " But you may enable below line to use current file directory as search base instead
+    " But you may enable one of below line to use an arbitrary directory or,
+    " Using the magic word 'current-file-dir' to use current file base directory
     " let g:ctrlp_ag_search_base = 'current-file-dir'
+    " let g:ctrlp_ag_search_base = 'app/controllers' " both relative and absolute path supported
     ```
 
 ## Usage
@@ -44,7 +46,8 @@ have been user-defined.
 - Set the variable `g:ctrlp_ag_timeout` to the number of seconds that the timeout filter should wait
   for ag to complete. (Default: `10`) Don't touch `g:ctrlp_ag_filter` if you want to use this
   filter.
-- Set the variable `g:ctrlp_ag_search_base` to change search base from PWD to current file directory.
+- Set the variable `g:ctrlp_ag_search_base` to change search base from PWD to current file directory or an arbitrary directory.
+  Please see the Create Mapping section for example.
 
 [1]: https://github.com/kien/ctrlp.vim
 [2]: https://github.com/ivalkeen/vim-ctrlp-tjump
