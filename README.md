@@ -25,6 +25,9 @@ have been user-defined.
         \ --ignore "deps/*"
         \ --ignore "_build/*"
         \ --ignore "node_modules/*"'
+    " By default ag will search from PWD
+    " But you may enable below line to use current file directory as search base instead
+    " let g:ctrlp_ag_search_base = 'current-file-dir'
     ```
 
 ## Usage
@@ -41,6 +44,7 @@ have been user-defined.
 - Set the variable `g:ctrlp_ag_timeout` to the number of seconds that the timeout filter should wait
   for ag to complete. (Default: `10`) Don't touch `g:ctrlp_ag_filter` if you want to use this
   filter.
+- Set the variable `g:ctrlp_ag_search_base` to change search base from PWD to current file directory.
 
 [1]: https://github.com/kien/ctrlp.vim
 [2]: https://github.com/ivalkeen/vim-ctrlp-tjump
