@@ -21,7 +21,7 @@ have been user-defined.
     vnoremap <c-f> :CtrlPagVisual<cr>
     nnoremap <leader>ca :CtrlPagLocate
     nnoremap <leader>cp :CtrlPagPrevious<cr>
-    let g:ctrlp_ag_ignores = '--ignore .git
+    let g:ctrlp_ag_options = '--ignore .git
         \ --ignore "deps/*"
         \ --ignore "_build/*"
         \ --ignore "node_modules/*"'

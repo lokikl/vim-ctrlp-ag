@@ -49,8 +49,8 @@ function! ctrlp#ag#exec(mode)
     endif
   endif
 
-  if (!exists('g:ctrlp_ag_ignores'))
-    let g:ctrlp_ag_ignores = "--ignore tags"
+  if (!exists('g:ctrlp_ag_options'))
+    let g:ctrlp_ag_options = "--ignore tags"
   endif
 
   if exists('g:ctrlp_ag_search_base') 
@@ -65,7 +65,7 @@ function! ctrlp#ag#exec(mode)
 
   let s:ag_results = split(system(g:ctrlp_ag_filter .
         \ "ag -Q " . s:ag_opt_for_sensitivity .
-        \ " --column " . g:ctrlp_ag_ignores .
+        \ " --column " . g:ctrlp_ag_options .
         \ " '" . s:word . "' " . dir . ""), "\n")
 
   " remove current file/line from results
